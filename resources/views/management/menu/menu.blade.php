@@ -2,19 +2,12 @@
 
     <div class="container mt-4">
         <div class="row justify-content-center">
-            <div class="col-md-4 ">
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="{{ route('category.index') }}">Category</a>
-                    <a class="list-group-item list-group-item-action" href="">Menu</a>
-                    <a class="list-group-item list-group-item-action" href="">Table</a>
-                    <a class="list-group-item list-group-item-action" href="">User</a>
-                </div>
-            </div>
+            @include('management.inc.sidebar')
             <div class="col-md-8">
                 <div class="d-flex justify-content-between mb-2">
-                    Categories
-                    <a class="btn btn-sm btn-success" href="{{ route('category.create') }}">Create
-                        Category</a>
+                    Menus
+                    <a class="btn btn-sm btn-success" href="{{ route('menu.create') }}">Create
+                        Menu</a>
                 </div>
                 <hr>
                 @if (Session()->has('status'))
@@ -27,33 +20,43 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Picture</th>
+                            <th scope="col">Description</th>
                             <th scope="col">Category</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($menus as $menu)
                             <tr>
-                                <td scope="row">{{ $category->id }}</td>
-                                <td scope="row">{{ $category->name }}</td>
-                                <td scope="row"><a href="{{ route('category.edit', $category->id) }}"
+                                <td>{{ $menu->id }}</td>
+                                <td>{{ $menu->name }}</td>
+                                <td>{{ $menu->price }}</td>
+                                <td>
+                                    <img src="{{ asset('menu_images') }}/{{ $menu->image }}" alt="{{ $menu->name }}"
+                                        width="120px" height="120px" class="img-thumbnail">
+                                </td>
+                                <td>{{ $menu->desc }}</td>
+                                <td>{{ $menu->category->name }}</td>
+                                <td><a href="/management/menu/{{ $menu->id }}/edit"
                                         class="btn btn-warning">Edit</a></td>
-                                <td scope="row">
-                                    <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                                <td>
+                                    <form action="{{ route('menu.destroy', $menu->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" value="delete" class="btn btn-outline-danger">
 
                                     </form>
                                 </td>
-
-
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{ $categories->links() }}
+
+                {{-- {{ $categories->links() }} --}}
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\management\CategoryController;
+use App\Http\Controllers\Management\MenuController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::get('/management', function () {
 })->name('management');
 
 Route::resource('/management/category', CategoryController::class);
+Route::resource('/management/menu', MenuController::class);
 
 
 Route::middleware('auth')->group(function () {

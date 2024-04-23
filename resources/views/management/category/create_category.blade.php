@@ -1,14 +1,7 @@
 <x-app-layout>
     <div class="container mt-4">
         <div class="row justify-content-center">
-            <div class="col-md-4 ">
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action" href="{{ route('category.index') }}">Category</a>
-                    <a class="list-group-item list-group-item-action" href="">Menu</a>
-                    <a class="list-group-item list-group-item-action" href="">Table</a>
-                    <a class="list-group-item list-group-item-action" href="">User</a>
-                </div>
-            </div>
+            @include('management.inc.sidebar')
             <div class="col-md-8">
                 <div class="d-flex justify-content-between mb-2">
                     Create a Category
