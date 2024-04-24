@@ -12,13 +12,13 @@
                                 <img src="{{ asset('images/business-analyst.png') }}" width="50px">
                             </div>
                         </a>
-                        <a href="">
+                        <a href="{{ route('cashier') }}">
                             <div style="display: flex; flex-direction: column; align-items: center;">
                                 <h4 class="mb-2">Cashier</h4>
                                 <img src="{{ asset('images/cash-machine.png') }}" width="50px">
                             </div>
                         </a>
-                        <a href="">
+                        <a href="{{ route('report') }}">
                             <div style="display: flex; flex-direction: column; align-items: center;">
                                 <h4 class="mb-2">Report</h4>
                                 <img src="{{ asset('images/seo-report.png') }}" width="50px">
