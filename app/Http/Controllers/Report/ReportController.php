@@ -10,7 +10,7 @@ class ReportController extends Controller
 {
     public function index()
     {
-        $sales = Sale::where('sale_status', 'paid');
+        $sales = Sale::all();
         return view('report.index')->with('sales', $sales);
     }
     // public function show(Request $request)
