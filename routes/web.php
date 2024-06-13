@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -40,12 +40,9 @@ Route::middleware(['auth', 'VerifyAdmin'])->group(function () {
     Route::resource('/management/table', TableController::class);
     Route::resource('/management/user', UserController::class);
 
-
     //reports routes
     Route::get('/report', [ReportController::class, 'index'])->name('report');
     Route::get('/report/show', [ReportController::class, 'show']);
-
-
 
 });
 
@@ -60,7 +57,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cashier/confirmOrderStatus', [CashierController::class, 'confirmOrderStatus']);
     Route::post('/cashier/deleteSaleDetail', [CashierController::class, 'deleteSaleDetail']);
     Route::post('/cashier/savePayment', [CashierController::class, 'savePayment']);
-
 
 });
 
